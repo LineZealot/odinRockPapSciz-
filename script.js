@@ -1,4 +1,21 @@
-/* 
+/*
+declare a variable called scorePlayer
+declare a variable called scoreComputer
+
+declare a function called counterScorePlayer
+    increment scorePlayer by 1
+
+declare a function called counterScoreComputer
+    increment scoreComputer by 1
+
+declare a function called getGameWinner
+    if scorePlayer is greater than scoreComputer
+        alert 'Congratulations you are the winner!'
+    else if scorePlayer is equal to scoreComputer
+        alert 'Whoops this game is a draw'
+    else
+        alert 'Sorry but you lose!'
+
 declare a function called choiceComputer
     declare a variable called roll with a random integer from 0 to 2 as a value
     return the value of roll
@@ -17,59 +34,70 @@ declare a function called choicePlayer
     return the value of selection
 
 declare a function called playRound with 2 parameters called computer and player
-    declare a variable called winner
     if player is equivalent to 3
         set the value of winner to 'winComp'
     else
         if computer is equivalent to 0
             if player is equivalent to 0
-                set the value of winner to 'tie'
                 alert 'Tie, no winner'
             else if player is equivalent to 1
-                set the value of winner to 'winPlayer'
                 alert 'You win! Paper beats Rock!'
+                call counterScorePlayer
             else
-                set the value of winner to 'winComp'
                 alert 'You lose! Rock beats Scissors!'
+                call counterScoreComputer
         else if computer is equivalent to 1
             if player is equivalent to 1
-                set the value of winner to 'tie'
                 alert 'Tie, no winner'
             else if player is equivalent to 2
-                set the value of winner to 'winPlayer'
                 alert 'You win! Scissors beats Paper!'
+                call counterScorePlayer
             else
-                set the value of winner to 'winComp'
                 alert 'You lose! Paper beats Rock!'
+                call counterScoreComputer
         else if computer is equivalent to 2
             if player is equivalent to 2
-                set the value of winner to 'tie'
                 alert 'Tie, no winner'
             else if player is equivalent to 0
-                set the value of winner to 'winPlayer'
                 alert 'You win! Rock beats Scissors!'
+                call counterScorePlayer
             else
-                set the value of winner to 'winComp'
                 alert 'You lose! Scissors beats Paper!'
-    return the value of winner
+                call counterScoreComputer
 
 declare a function called playGame with 1 parameter called score
-    declare a variable called winsPlayer with a value of 0
-    declare a variable called winsComputer with a value of 0
     start a loop that increments a variable called rounds until it is equivalent to 5
         call the playRound function with choiceComputer and choicePlayer as inputs
-        if playRound is equivalent to winComp
-            increment winsComputer by 1
-        else if playRound is equivalent to winPlayer
-            increment winsPlayer by 1
         log 'Player: ' + winsPlayer to the console
         log 'Computer: ' + winsComputer to the console
+        if rounds is equivalent to 5
+            call getGameWinner
+
+call playGame
 */
 
 /*
 ISSUES:
 score isn't adjusting accurately
 */
+// Score Variables
+let scorePlayer = 0;
+let scoreComputer = 0;
+
+// Score functions
+let counterScorePlayer = () => scorePlayer++;
+let counterScoreComputer = () => scoreComputer++;
+
+// getGameWinner
+function getGameWinner () {
+    if (scorePlayer > scoreComputer) {
+        alert('Congratulations you win!');
+    } else if (scorePlayer === scoreComputer) {
+        alert('Whoops this game is a draw!');
+    } else {
+        alert('Sorry but you lose!');
+    }
+}
 
 // choiceComputer
 function choiceComputer () {
@@ -99,60 +127,51 @@ function choicePlayer () {
 function playRound (computer, player) {
     let winner;
     if (player === 3) {
-        winner = 'winComp';
+        alert('Invalid selection');
     } else {
         if (computer === 0) {
             if (player === 0) {
-                winner = 'tie';
                 alert ('Tie, no winner');
             } else if (player === 1) {
-                winner = 'winPlayer';
                 alert ('You win! Paper beats Rock!');
+                counterScorePlayer();
             } else {
-                winner = 'winComp';
                 alert ('You lose! Rock beats Scissors!');
+                counterScoreComputer();
             }
         } else if (computer === 1) {
             if (player === 1) {
-                winner = 'tie';
                 alert ('Tie, no winner');
             } else if (player === 2) {
-                winner = 'winPlayer';
                 alert ('You win! Scissors beats Paper!');
+                counterScorePlayer();
             } else {
-                winner = 'winComp';
                 alert ('You lose! Paper beats Rock!');
+                counterScoreComputer();
             }
         } else if (computer === 2) {
             if (player === 2) {
-                winner = 'tie';
                 alert ('Tie, no winner');
             } else if (player === 0) {
-                winner = 'winPlayer';
                 alert ('You win! Rock beats Scissors!');
+                counterScorePlayer();
             } else {
-                winner = 'winComp';
                 alert ('You lose! Scissors beats Paper!');
+                counterScoreComputer();
             }
         }
     }
-    console.log(winner);
-    return winner;
 }
 
 // playGame
 function playGame () {
-    let winsPlayer = 0;
-    let winsComputer = 0;
     for (let rounds = 1; rounds <= 5; rounds++) {
         playRound(choiceComputer(), choicePlayer());
-        if (playRound() == 'winComp') {
-            winsComputer++;
-        } else if (playRound() == 'winPlayer') {
-            winsPlayer++;
+        console.log('Player: ' + scorePlayer);
+        console.log('Computer: ' + scoreComputer);
+        if (rounds == 5) {
+            getGameWinner();
         }
-        console.log('Player: ' + winsPlayer);
-        console.log('Computer: ' + winsComputer);
     }
 }
 
