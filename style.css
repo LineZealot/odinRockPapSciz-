@@ -1,0 +1,31 @@
+body, html{
+    /* Style */
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* Layout */
+    height: 100%;
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.gameBody {
+    /* Flex */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.gameTitle {
+    /* Style */
+    font-size: 42px;
+    font-weight: 900;
+    /* Layout */
+    margin: 24px;
+}
+.gameControls {
+    /* Style */
+    /* Flex */
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
