@@ -9,6 +9,15 @@ body, html{
     justify-content: center;
     align-items: center;
 }
+button {
+    /* Style */
+    all: unset;
+    border: solid black 4px;
+    border-radius: 8px;
+}
+button:hover{
+    background-color: rgb(219, 219, 219);
+}
 .gameBody {
     /* Flex */
     display: flex;
@@ -23,9 +32,42 @@ body, html{
     margin: 24px;
 }
 .gameControls {
-    /* Style */
     /* Flex */
     display: flex;
     justify-content: space-between;
     gap: 12px;
+}
+.gameScore {
+    /* Style */
+    border: solid black 4px;
+    border-radius: 8px;
+    font-size: 36px;
+    font-weight: 600;
+    /* Layout */
+    margin: 24px;
+    padding: 12px;
+    width: 100%;
+    /* Flex */
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+.computer {
+    /* Flex */
+    display: flex;
+}
+.player {
+    /* Flex */
+    display: flex;
+}
+.displayWinner {
+    /* Style */
+    color: black;
+    font-size: 36px;
+    font-weight: 900;
+    /* Flex */
+    display: flex;
+    /* Layout */
+    height: 36px;
+    margin-bottom: 12px;
 }
